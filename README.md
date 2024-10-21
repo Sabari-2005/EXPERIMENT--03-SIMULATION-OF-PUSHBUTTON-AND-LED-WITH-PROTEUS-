@@ -1,5 +1,6 @@
 # EXPERIMENT--02-SIMULATION-OF-PUSHBUTTON-AND-LED INTERFACE WITH ARM CONTROLLER AND PROTEUS 
-## Aim: To Interface a Digital output (LED) and Digital input (Pushbutton) to ARM development board , and simulate it in Proteus 
+## Aim: 
+To Interface a Digital output (LED) and Digital input (Pushbutton) to ARM development board , and simulate it in Proteus 
 ## Components required: STM32 CUBE IDE, Proteus 8 simulator .
 ## Theory 
 The full form of an ARM is an advanced reduced instruction set computer (RISC) machine, and it is a 32-bit processor architecture expanded by ARM holdings. The applications of an ARM processor include several microcontrollers as well as processors. The architecture of an ARM processor was licensed by many corporations for designing ARM processor-based SoC products and CPUs. This allows the corporations to manufacture their products using ARM architecture. Likewise, all main semiconductor companies will make ARM-based SOCs such as Samsung, Atmel, TI etc.
@@ -72,32 +73,32 @@ We are now at the last part of step by step guide on how to simulate STM32 proje
 
 ## STM 32 CUBE PROGRAM :
 ```
+
+
 #include "main.h"
 #include<stdbool.h>
 void push_button();
 bool button_status;
 
+
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 
+
 int main(void)
 {
- 
+  
   HAL_Init();
 
  
   SystemClock_Config();
 
- 
   MX_GPIO_Init();
   
   while (1)
   {
-   
-	  push_button();
-    
-  }
   
+  }
 }
 void push_button()
 {
@@ -118,7 +119,7 @@ void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-  
+ 
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
   
@@ -144,25 +145,21 @@ void SystemClock_Config(void)
   }
 }
 
-
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
- 
+  
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
- 
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 
-  
   GPIO_InitStruct.Pin = GPIO_PIN_13;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
- 
   GPIO_InitStruct.Pin = GPIO_PIN_5;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -179,29 +176,22 @@ void Error_Handler(void)
   while (1)
   {
   }
- 
 }
 
-#ifdef  USE_FULL_ASSERT
 
 void assert_failed(uint8_t *file, uint32_t line)
 {
-  /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-  /* USER CODE END 6 */
+ 
 }
-#endif /* USE_FULL_ASSERT */
-
 
 ```
 ## Output screen shots of proteus  :
 
-![WhatsApp Image 2024-09-16 at 09 07 42](https://github.com/user-attachments/assets/1bcd3c0c-1c34-44aa-b240-ad27a240914e)
+![image](https://github.com/user-attachments/assets/0a863992-668e-4771-9fbf-e776dab7bcb7)
 
 
 ## Proteus layout(Add pdf screen shot of circuit here)
-![WhatsApp Image 2024-09-16 at 09 07 42 (1)](https://github.com/user-attachments/assets/d58dd486-b75c-4979-8c24-86f33ef19f7d)
+![image](https://github.com/user-attachments/assets/7c13c0dc-d073-4db0-80f6-0f47d4114b13)
 
 ## Result :
 Interfacing a digital output and digital input  with ARM microcontroller are simulated in proteus and the results are verified.
